@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vermont Has the Doctors. You Can't See One.</title>
+<meta name="description" content="An evidence-based case for primary care payment reform in Vermont.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #fafaf7;
+    --rule: #d4d2cc;
+    --muted: #6b6b65;
+    --accent: #2d5016;
+    --accent-light: #4a7c2a;
+    --warning: #8b2c1a;
+    --highlight: #f4f1e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .display { font-family: 'Fraunces', Georgia, serif; font-weight: 700; line-height: 1.05; letter-spacing: -0.02em; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+
+  section { padding: 6rem 2rem; max-width: 1100px; margin: 0 auto; }
+  @media (min-width: 768px) { section { padding: 8rem 3rem; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 2rem;
+    height: 1px;
+    background: var(--ink);
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 .line2 {
+    color: var(--warning);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    max-width: 600px;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    line-height: 1.5;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    flex-wrap: wrap;
+    border-top: 1px solid var(--rule);
+    padding-top: 1.5rem;
+  }
+
+  .hero-meta strong { color: var(--ink); font-weight: 600; }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  /* ============ SECTION HEADERS ============ */
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+  }
+
+  .section-lead {
+    font-size: 1.2rem;
+    color: var(--muted);
+    max-width: 700px;
+    margin-bottom: 4rem;
+    line-height: 1.5;
+  }
+
+  /* ============ VOICES ============ */
+  .voices { background: var(--paper); }
+
+  .quote-block {
+    margin: 3rem 0;
+    padding: 0 0 0 2rem;
+    border-left: 3px solid var(--accent);
+    max-width: 800px;
+  }
+
+  .quote-block:nth-child(even) {
+    margin-left: auto;
+  }
+
+  .quote-text {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.5vw, 2rem);
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .quote-attr {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* ============ PARADOX ============ */
+  .paradox-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (min-width: 768px) {
+    .paradox-grid { grid-template-columns: 1fr 1fr; }
+    .paradox-cell:first-child { border-right: 1px solid var(--rule); }
+  }
+
+  .paradox-cell {
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .paradox-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 12vw, 8rem);
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+  }
+
+  .paradox-cell:nth-child(2) .paradox-num {
+    color: var(--warning);
+  }
+
+  .paradox-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .paradox-caption {
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* ============ MAP ============ */
+  .map-wrap { background: var(--ink); color: var(--paper); }
+  .map-wrap section { max-width: 1200px; }
+  .map-wrap .section-title { color: var(--paper); }
+  .map-wrap .section-lead { color: #a8a8a2; }
+  .map-wrap .section-num { color: #6b6b65; }
+
+  .map-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .map-container { grid-template-columns: 1.2fr 1fr; }
+  }
+
+  .map-svg-wrap {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    aspect-ratio: 1 / 1.1;
+  }
+
+  .map-svg { width: 100%; height: 100%; }
+
+  .vt-region {
+    fill: #3a3a35;
+    stroke: var(--paper);
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: fill 0.2s ease;
+  }
+
+  .vt-region:hover { fill: var(--accent-light); }
+  .vt-region.active { fill: var(--accent); }
+
+  .vt-region.severity-high { fill: #5a1a10; }
+  .vt-region.severity-high:hover { fill: #8b2c1a; }
+  .vt-region.severity-med { fill: #5a3a10; }
+  .vt-region.severity-med:hover { fill: #a06520; }
+
+  .map-info {
+    padding: 1rem 0;
+  }
+
+  .map-info-region {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--paper);
+  }
+
+  .map-stat {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .map-stat:last-child { border: none; }
+
+  .map-stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #888884;
+    margin-bottom: 0.5rem;
+  }
+
+  .map-stat-value {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.4rem;
+    color: var(--paper);
+  }
+
+  .map-prompt {
+    font-size: 0.9rem;
+    color: #888884;
+    font-style: italic;
+    margin-top: 2rem;
+  }
+
+  /* ============ DIAGNOSIS ============ */
+  .diagnosis .strikethrough {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    color: var(--muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--warning);
+    text-decoration-thickness: 3px;
+    margin-bottom: 2.5rem;
+    font-family: 'Fraunces', Georgia, serif;
+    line-height: 1.4;
+  }
+
+  .diagnosis .reframe {
+    font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .diagnosis .reframe strong {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ============ CHART ============ */
+  .chart-section {
+    background: var(--highlight);
+  }
+
+  .chart {
+    margin: 3rem 0;
+  }
+
+  .chart-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding: 0.75rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .chart-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  .chart-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .chart-label { text-align: left; }
+  }
+
+  .chart-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 36px;
+  }
+
+  .chart-bar {
+    height: 28px;
+    background: var(--ink);
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 0;
+  }
+
+  .chart-bar.vt {
+    background: var(--warning);
+  }
+
+  .chart-bar.target {
+    background: var(--accent);
+  }
+
+  .chart-value {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+
+  .chart-caveat {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+    margin-left: 195px;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .chart-caveat { margin-left: 0; }
+  }
+
+  /* ============ STATES ============ */
+  .states-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  @media (min-width: 900px) {
+    .states-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .state-card {
+    padding: 3rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s ease;
+  }
+
+  @media (min-width: 900px) {
+    .state-card { border-right: 1px solid var(--rule); border-bottom: none; }
+    .state-card:last-child { border-right: none; }
+  }
+
+  .state-card:hover { background: var(--highlight); }
+
+  .state-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .state-mechanism { font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.5; }
+  .state-mechanism strong { font-weight: 700; }
+
+  .state-result {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--ink);
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ============ EVIDENCE STAT ============ */
+  .evidence {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 8rem 2rem;
+  }
+
+  .evidence-num {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(8rem, 25vw, 16rem);
+    line-height: 0.9;
+    color: var(--accent-light);
+    letter-spacing: -0.05em;
+    margin-bottom: 1.5rem;
+  }
+
+  .evidence-claim {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.5;
+  }
+
+  .evidence-cite {
+    font-size: 0.85rem;
+    color: #888884;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .evidence-coda {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #c8c8c2;
+  }
+
+  /* ============ VERMONT PATH ============ */
+  .vt-path-list {
+    list-style: none;
+    margin: 3rem 0;
+  }
+
+  .vt-path-list li {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-top: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  @media (max-width: 600px) {
+    .vt-path-list li { grid-template-columns: 1fr; gap: 0.5rem; }
+  }
+
+  .vt-path-list li:last-child { border-bottom: 1px solid var(--rule); }
+
+  .vt-path-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .vt-path-label.warning { color: var(--warning); }
+
+  .vt-path-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .oxfeld-note {
+    margin-top: 4rem;
+    padding: 2rem;
+    background: var(--highlight);
+    border-left: 4px solid var(--accent);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+
+  /* ============ CLOSING ============ */
+  .closing {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .closing-quote {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+    max-width: 800px;
+  }
+
+  .closing-attr {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .closing-stakes {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    max-width: 900px;
+  }
+
+  .closing-stakes strong {
+    color: var(--warning);
+  }
+
+  .closing-question {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: var(--accent);
+    margin-top: 3rem;
+    line-height: 1.1;
+  }
+
+  /* ============ SOURCES ============ */
+  .sources {
+    background: var(--ink);
+    color: #a8a8a2;
+    padding: 4rem 2rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .sources-inner { max-width: 1100px; margin: 0 auto; }
+
+  .sources h3 {
+    color: var(--paper);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  .sources-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 700px) {
+    .sources-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .source-item {
+    padding-left: 1rem;
+    border-left: 2px solid #444440;
+  }
+
+  .source-item strong { color: var(--paper); display: block; margin-bottom: 0.25rem; font-weight: 500; }
+
+  .footer-line {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333330;
+    font-size: 0.8rem;
+    color: #6b6b65;
+  }
+
+  /* ============ FADE-IN ON SCROLL ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-eyebrow">A Vermont Healthcare Brief · Spring 2026</div>
+  <h1 class="display">
+    Vermont has the doctors.<br>
+    <span class="line2">You can't see one.</span>
+  </h1>
+  <p class="hero-sub">
+    Vermont leads the nation in primary care clinicians per capita. Wait times still run 60 to 180 days. The shortage is real. The story we tell about it is wrong.
+  </p>
+  <div class="hero-meta">
+    <span><strong>Luke McNamara</strong></span>
+    <span>GHLT 0366: Law &amp; Economics in Healthcare</span>
+    <span>Middlebury College</span>
+  </div>
+  <div class="scroll-cue">Scroll ↓</div>
+</div>
+
+<!-- ============ VOICES ============ -->
+<div class="voices">
+  <section>
+    <div class="section-num">01 / Voices</div>
+    <h2 class="section-title display">What Vermonters told the state.</h2>
+    <p class="section-lead">In 2022, the Green Mountain Care Board collected public testimony on healthcare wait times. The Agency of Human Services and Department of Financial Regulation published it. Four years later, the wait times are worse.</p>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">"I will not make it over 3 months bleeding every day."</p>
+      <p class="quote-attr">Vermont patient · 2022 Wait Times Report</p>
+    </div>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">"I am a doctor and told the scheduler it was likely cancerous. They gave me the earliest available appointment&hellip; a 5-month wait."</p>
+      <p class="quote-attr">Vermont patient · 2022 Wait Times Report</p>
+    </div>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">"It is not OK for someone with a potential diagnosis of leukemia to wait 4 months just to 'get in the door.' Some leukemias will be terminal in a shorter time than this."</p>
+      <p class="quote-attr">Vermont patient · 2022 Wait Times Report</p>
+    </div>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">"I can't imagine how many other parents are struggling to find care for their children."</p>
+      <p class="quote-attr">Vermont parent · 2022 Wait Times Report</p>
+    </div>
+
+    <div class="quote-block reveal">
+      <p class="quote-text">"Where is the CARE in our healthcare here in Vermont???"</p>
+      <p class="quote-attr">Vermont patient · 2022 Wait Times Report</p>
+    </div>
+  </section>
+</div>
+
+<!-- ============ PARADOX ============ -->
+<section>
+  <div class="section-num">02 / The paradox</div>
+  <h2 class="section-title display">Two numbers from the same state, in the same year.</h2>
+  <p class="section-lead">Vermont has more primary care clinicians per capita than any other state in the country. It also has some of the longest wait times. These facts are not contradictory. They are diagnostic.</p>
+
+  <div class="paradox-grid reveal">
+    <div class="paradox-cell">
+      <div class="paradox-num">216</div>
+      <div class="paradox-label">primary care clinicians per 100,000 Vermonters</div>
+      <div class="paradox-caption">Highest density in the United States. National average: 103.8.</div>
+    </div>
+    <div class="paradox-cell">
+      <div class="paradox-num">60–180</div>
+      <div class="paradox-label">days to get an appointment</div>
+      <div class="paradox-caption">29% of practices not accepting new patients (Vermont Public, January 2026).</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAP ============ -->
+<div class="map-wrap">
+<section>
+  <div class="section-num">03 / Geography</div>
+  <h2 class="section-title display">The crisis is not evenly distributed.</h2>
+  <p class="section-lead">Nearly two-thirds of Vermonters live outside Chittenden County. The Northeast Kingdom and parts of central and eastern Vermont carry federal Medically Underserved Area designations. Tap a region to see what access looks like there.</p>
+
+  <div class="map-container">
+    <div class="map-svg-wrap">
+      <svg class="map-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Stylized Vermont, divided into approximate regional zones.
+             These are abstract regions, not real counties. -->
+
+        <!-- Northeast Kingdom (NE) - high severity -->
+        <path class="vt-region severity-high" data-region="nek"
+          d="M 240 60 L 340 80 L 360 180 L 320 220 L 240 200 Z" />
+
+        <!-- Northwest / Franklin / Grand Isle (NW) - medium -->
+        <path class="vt-region severity-med" data-region="nw"
+          d="M 70 60 L 240 60 L 240 200 L 130 200 L 90 150 Z" />
+
+        <!-- Central East (CE) - high severity (east of Montpelier) -->
+        <path class="vt-region severity-high" data-region="ce"
+          d="M 240 200 L 320 220 L 340 320 L 250 320 Z" />
+
+        <!-- Central West / Chittenden corridor - lower severity -->
+        <path class="vt-region" data-region="cw"
+          d="M 130 200 L 240 200 L 250 320 L 160 320 L 110 270 Z" />
+
+        <!-- Southeast (SE) -->
+        <path class="vt-region severity-med" data-region="se"
+          d="M 250 320 L 340 320 L 320 440 L 240 460 Z" />
+
+        <!-- Southwest (SW) -->
+        <path class="vt-region" data-region="sw"
+          d="M 160 320 L 250 320 L 240 460 L 170 450 L 130 380 Z" />
+
+        <!-- Region labels -->
+        <text x="290" y="135" fill="#fafaf7" font-family="Fraunces" font-size="13" text-anchor="middle" font-style="italic" pointer-events="none">NEK</text>
+        <text x="160" y="130" fill="#fafaf7" font-family="Fraunces" font-size="12" text-anchor="middle" font-style="italic" pointer-events="none">Northwest</text>
+        <text x="290" y="265" fill="#fafaf7" font-family="Fraunces" font-size="11" text-anchor="middle" font-style="italic" pointer-events="none">Central East</text>
+        <text x="180" y="265" fill="#fafaf7" font-family="Fraunces" font-size="11" text-anchor="middle" font-style="italic" pointer-events="none">Chittenden</text>
+        <text x="290" y="390" fill="#fafaf7" font-family="Fraunces" font-size="11" text-anchor="middle" font-style="italic" pointer-events="none">Southeast</text>
+        <text x="190" y="395" fill="#fafaf7" font-family="Fraunces" font-size="11" text-anchor="middle" font-style="italic" pointer-events="none">Southwest</text>
+
+        <!-- Compass / scale hint -->
+        <text x="370" y="495" fill="#888884" font-family="JetBrains Mono" font-size="9" text-anchor="end">Vermont · regional view</text>
+      </svg>
+    </div>
+
+    <div class="map-info" id="map-info">
+      <div class="map-info-region">Click any region</div>
+      <div class="map-stat">
+        <div class="map-stat-label">What you'll see</div>
+        <div class="map-stat-value">Wait time, access status, federal designations.</div>
+      </div>
+      <p class="map-prompt">The Northeast Kingdom and central-east Vermont have the most severe access shortages. Chittenden County and the southwest have more clinicians but still face waits.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ============ DIAGNOSIS ============ -->
+<section class="diagnosis">
+  <div class="section-num">04 / The wrong diagnosis</div>
+  <h2 class="section-title display">The standard story is a workforce story. The data tells a different one.</h2>
+
+  <p class="strikethrough">Vermont has a primary care shortage. Train more doctors. Recruit harder. Throw scholarships at the problem.</p>
+
+  <p class="reframe"><strong>Vermont has more primary care clinicians per capita than any other state.</strong></p>
+  <p class="reframe">The shortage is real. It isn't a supply problem. It's a payment problem.</p>
+</section>
+
+<!-- ============ CHART ============ -->
+<div class="chart-section">
+<section>
+  <div class="section-num">05 / Where the money goes</div>
+  <h2 class="section-title display">Vermont leads the nation in primary care spending share. It still isn't enough.</h2>
+  <p class="section-lead">Most of the U.S. healthcare dollar flows to specialty care, hospitals, and pharmaceuticals. Primary care, the part of the system most strongly linked to better health outcomes, gets the smallest cut. Even Vermont, which spends a higher share than any other state, falls short of what other states are now requiring.</p>
+
+  <div class="chart">
+    <div class="chart-row">
+      <div class="chart-label">Vermont (current)</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar vt" data-width="32.5"></div>
+        <div class="chart-value">6.5%</div>
+      </div>
+    </div>
+    <div class="chart-caveat">Commercial spending, narrow definition. Highest in the nation.</div>
+
+    <div class="chart-row">
+      <div class="chart-label">Rhode Island standard</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar target" data-width="53.5"></div>
+        <div class="chart-value">10.7%</div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-label">Oregon target</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar target" data-width="60"></div>
+        <div class="chart-value">12%</div>
+      </div>
+    </div>
+
+    <div class="chart-row">
+      <div class="chart-label">Pending VT bills</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar target" data-width="75"></div>
+        <div class="chart-value">15%</div>
+      </div>
+    </div>
+  </div>
+
+  <p style="font-size: 0.9rem; color: var(--muted); font-style: italic; margin-top: 2rem;">
+    Bars show primary care as a share of total medical spending. Source: 2026 Milbank Memorial Fund Primary Care Scorecard; state regulatory filings.
+  </p>
+</section>
+</div>
+
+<!-- ============ STATES ============ -->
+<section>
+  <div class="section-num">06 / Three states, three mechanisms</div>
+  <h2 class="section-title display">Other states already proved this works.</h2>
+  <p class="section-lead">Vermont does not have to invent a payment reform model. Three states have already built and tested ones that increased primary care investment without creating new agencies, new taxes, or new bureaucracies.</p>
+
+  <div class="states-grid reveal">
+    <div class="state-card">
+      <div class="state-name">Rhode Island</div>
+      <p class="state-mechanism">Required insurers to spend at least <strong>10.7%</strong> of medical expenses on primary care, beginning <strong>2010</strong>.</p>
+      <p class="state-mechanism">Office of the Health Insurance Commissioner enforces affordability standards directly through rate review.</p>
+      <p class="state-result">Spending projected to double by 2029.</p>
+    </div>
+
+    <div class="state-card">
+      <div class="state-name">Oregon</div>
+      <p class="state-mechanism">Set a <strong>12%</strong> all-payer primary care target through SB 934 in 2017.</p>
+      <p class="state-mechanism">Coordinated Care Organizations were required to report annually and progress toward the target by 2023.</p>
+      <p class="state-result">CCOs averaged 15.5% by 2018. Hit the target. Beat it.</p>
+    </div>
+
+    <div class="state-card">
+      <div class="state-name">Colorado</div>
+      <p class="state-mechanism">Department of Insurance regulation increased primary care share by <strong>+1 percentage point per year</strong>.</p>
+      <p class="state-mechanism">No new statute. No new agency. Existing regulatory authority, deployed differently.</p>
+      <p class="state-result">Slow. Steady. Sustained.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVIDENCE ============ -->
+<div class="evidence">
+  <div class="section-num" style="margin-bottom: 2rem;">07 / What's at stake</div>
+  <div class="evidence-num">5.3%</div>
+  <p class="evidence-claim">
+    Reduction in population mortality for each additional primary care physician per 10,000 people.
+  </p>
+  <p class="evidence-cite">Starfield, Shi &amp; Macinko · Milbank Quarterly · 2005</p>
+
+  <p class="evidence-coda">
+    "Up to 127,617 deaths per year in the United States could be averted through adequate primary care supply."
+  </p>
+</div>
+
+<!-- ============ VERMONT PATH ============ -->
+<section>
+  <div class="section-num">08 / The Vermont path</div>
+  <h2 class="section-title display">The bills are already drafted.</h2>
+  <p class="section-lead">Vermont's 2025–26 legislative session has multiple primary care payment reform proposals on the table. The legal architecture is mostly in place. What's missing is the political will to pass it.</p>
+
+  <ul class="vt-path-list">
+    <li>
+      <span class="vt-path-label">S.197</span>
+      <span class="vt-path-text">Establishes a Primary Care Payment Reform Program, operational by July 1, 2027.</span>
+    </li>
+    <li>
+      <span class="vt-path-label">H.680</span>
+      <span class="vt-path-text">Creates a primary care access reform program with monthly capitated payments and no patient cost-sharing for routine primary care.</span>
+    </li>
+    <li>
+      <span class="vt-path-label">Pending target</span>
+      <span class="vt-path-text">15% of total Vermont health spending directed toward primary care.</span>
+    </li>
+    <li>
+      <span class="vt-path-label warning">Missing</span>
+      <span class="vt-path-text">The political will to pass them.</span>
+    </li>
+  </ul>
+
+  <div class="oxfeld-note">
+    Ellen Oxfeld and Vermont's universal primary care movement argue we should go further: fund primary care like a public good, outside the insurance system entirely. A payment floor doesn't finish that work. It gets us closer.
+  </div>
+</section>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing">
+  <div class="section-num">09 / The question</div>
+
+  <p class="closing-quote">"Where is the CARE in our healthcare here in Vermont???"</p>
+  <p class="closing-attr">Vermont patient · 2022 Wait Times Report</p>
+
+  <p class="closing-stakes">
+    By 2030, Vermont will be <strong>370 primary care physicians short</strong> of need.<br>
+    The bills are written. The evidence is in. The money is the fix.
+  </p>
+
+  <p class="closing-question">What are we waiting for?</p>
+</section>
+
+<!-- ============ SOURCES ============ -->
+<div class="sources">
+  <div class="sources-inner">
+    <h3>Sources &amp; further reading</h3>
+    <div class="sources-grid">
+      <div class="source-item"><strong>2022 VT Wait Times Report</strong>Agency of Human Services, Green Mountain Care Board, and Department of Financial Regulation. <em>Health Services Wait Times Report</em>, February 16, 2022.</div>
+      <div class="source-item"><strong>The Bridge (Montpelier)</strong>"Locals Have Long Waits for Primary Care," May 14, 2024.</div>
+      <div class="source-item"><strong>Vermont Public</strong>"Lawmakers hope payment reform can shore up primary care in Vt.," January 14, 2026.</div>
+      <div class="source-item"><strong>Rural Health Transformation Filing</strong>State of Vermont application to CMS, November 12, 2025.</div>
+      <div class="source-item"><strong>Vermont Business Magazine</strong>"Vermont specialist reimagining primary care amid U.S. national shortage," March 10, 2026.</div>
+      <div class="source-item"><strong>Milbank Memorial Fund</strong>2026 Primary Care Scorecard, February 2026.</div>
+      <div class="source-item"><strong>Rhode Island OHIC</strong>Rhode Island Code R. § 32-1-2:10; OHIC Affordability Standards, revised 2025.</div>
+      <div class="source-item"><strong>Oregon Health Authority</strong>Oregon SB 934 (2017); Primary Care Spending reports.</div>
+      <div class="source-item"><strong>Starfield, Shi &amp; Macinko (2005)</strong>"Contribution of Primary Care to Health Systems and Health." <em>Milbank Quarterly</em> 83, no. 3: 457–502.</div>
+      <div class="source-item"><strong>Vermont General Assembly</strong>S.197 and H.680, 2025–26 legislative session.</div>
+    </div>
+    <p class="footer-line">
+      Created by Luke McNamara · GHLT 0366: Law &amp; Economics in Healthcare · Middlebury College · Spring 2026
+    </p>
+  </div>
+</div>
+
+<script>
+  // ====== Map interactivity ======
+  const regionData = {
+    nek: {
+      name: 'Northeast Kingdom',
+      stats: [
+        { label: 'Severity', value: 'Highest in state' },
+        { label: 'Access status', value: 'Federally-designated Medically Underserved Area' },
+        { label: 'On the ground', value: 'Dr. Bob Primeau recently retired from Island Pond Health Center, where he was the only primary care doctor for miles.' },
+        { label: 'PCP within 30 min', value: 'Many residents have none.' }
+      ]
+    },
+    nw: {
+      name: 'Northwest Vermont',
+      stats: [
+        { label: 'Severity', value: 'Moderate' },
+        { label: 'Access', value: 'Closer to Burlington but rural pockets remain underserved.' },
+        { label: 'Note', value: 'Franklin and Grand Isle counties face workforce challenges similar to the NEK.' }
+      ]
+    },
+    ce: {
+      name: 'Central East Vermont',
+      stats: [
+        { label: 'Severity', value: 'High' },
+        { label: 'Access status', value: 'Areas northeast and east of Montpelier carry federal MUA designation.' },
+        { label: 'Wait times', value: 'Central Vermont Medical Center primary care: "anywhere from this June to as long as 18 months from now" (The Bridge, 2024).' }
+      ]
+    },
+    cw: {
+      name: 'Chittenden corridor',
+      stats: [
+        { label: 'Severity', value: 'Lower than rural areas — but still strained' },
+        { label: 'Note', value: 'Only ~1/3 of Vermonters live here. The state\'s clinician density is concentrated, but waits persist statewide.' },
+        { label: 'Specialist wait', value: 'Statewide median 41 days; some specialties (dermatology) up to 410 days.' }
+      ]
+    },
+    se: {
+      name: 'Southeast Vermont',
+      stats: [
+        { label: 'Severity', value: 'Moderate' },
+        { label: 'Access', value: 'Mixed — Brattleboro area better served than rural pockets.' },
+        { label: 'Trend', value: '16% of Vermont primary care physicians plan to retire or reduce hours within 12 months.' }
+      ]
+    },
+    sw: {
+      name: 'Southwest Vermont',
+      stats: [
+        { label: 'Severity', value: 'Lower' },
+        { label: 'Access', value: 'Rutland-area population centers have more access than the rural east.' },
+        { label: 'Note', value: 'Workforce retention an ongoing concern as physicians retire.' }
+      ]
+    }
+  };
+
+  const mapInfo = document.getElementById('map-info');
+  const regions = document.querySelectorAll('.vt-region');
+
+  regions.forEach(region => {
+    region.addEventListener('click', () => {
+      regions.forEach(r => r.classList.remove('active'));
+      region.classList.add('active');
+
+      const data = regionData[region.dataset.region];
+      if (!data) return;
+
+      let html = `<div class="map-info-region">${data.name}</div>`;
+      data.stats.forEach(stat => {
+        html += `
+          <div class="map-stat">
+            <div class="map-stat-label">${stat.label}</div>
+            <div class="map-stat-value">${stat.value}</div>
+          </div>
+        `;
+      });
+      mapInfo.innerHTML = html;
+    });
+  });
+
+  // ====== Reveal on scroll ======
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ====== Animate chart bars when in view ======
+  const chartObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.chart-bar').forEach(bar => {
+          const width = bar.dataset.width;
+          bar.style.width = width + '%';
+        });
+        chartObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const chartEl = document.querySelector('.chart');
+  if (chartEl) chartObserver.observe(chartEl);
+</script>
+
+</body>
+</html>
