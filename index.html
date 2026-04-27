@@ -397,6 +397,72 @@
     .chart-caveat { margin-left: 0; }
   }
 
+  /* ============ COMPARISON TABLE ============ */
+  .comparison-table {
+    margin: 3rem 0 2rem;
+    border-top: 2px solid var(--ink);
+  }
+
+  .comp-row {
+    display: grid;
+    grid-template-columns: 1.2fr 3fr 1.5fr;
+    gap: 2rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  @media (max-width: 700px) {
+    .comp-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  .comp-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    padding: 0.8rem 0;
+  }
+
+  .comp-state {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+  }
+
+  .comp-mechanism {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  .comp-status {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .comp-yes {
+    color: var(--accent);
+  }
+
+  .comp-no {
+    color: var(--warning);
+    font-weight: 600;
+  }
+
+  .comp-vt {
+    background: rgba(139, 44, 26, 0.04);
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
   /* ============ STATES ============ */
   .states-grid {
     display: grid;
@@ -791,76 +857,70 @@
 <div class="chart-section">
 <section>
   <div class="section-num">05 / Where the money goes</div>
-  <h2 class="section-title display">Vermont leads the nation in primary care spending share. It still isn't enough.</h2>
-  <p class="section-lead">Most of the U.S. healthcare dollar flows to specialty care, hospitals, and pharmaceuticals. Primary care, the part of the system most strongly linked to better health outcomes, gets the smallest cut. Even Vermont, which spends a higher share than any other state, falls short of what other states are now requiring.</p>
+  <h2 class="section-title display">Vermont is the only state in this group without a binding primary care spending target.</h2>
+  <p class="section-lead">Most of the U.S. healthcare dollar flows to specialty care, hospitals, and pharmaceuticals. Primary care, the part of the system most strongly linked to better health outcomes, gets the smallest cut. Other states have responded by writing primary care investment into law as a measurable obligation. Vermont has not, at least not yet.</p>
 
-  <div class="chart">
-    <div class="chart-row">
-      <div class="chart-label">Vermont (current)</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar vt" data-width="32.5"></div>
-        <div class="chart-value">6.5%</div>
-      </div>
-    </div>
-    <div class="chart-caveat">Commercial spending, narrow definition. Highest in the nation.</div>
-
-    <div class="chart-row">
-      <div class="chart-label">Rhode Island standard</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar target" data-width="53.5"></div>
-        <div class="chart-value">10.7%</div>
-      </div>
+  <div class="comparison-table">
+    <div class="comp-row comp-header">
+      <div class="comp-state">State</div>
+      <div class="comp-mechanism">Mechanism</div>
+      <div class="comp-status">Status</div>
     </div>
 
-    <div class="chart-row">
-      <div class="chart-label">Oregon target</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar target" data-width="60"></div>
-        <div class="chart-value">12%</div>
-      </div>
+    <div class="comp-row">
+      <div class="comp-state"><strong>Rhode Island</strong></div>
+      <div class="comp-mechanism">OHIC Affordability Standards (2010, revised 2025) require insurers to spend at least 10.7% of medical expenses on primary care.</div>
+      <div class="comp-status comp-yes">Binding standard since 2010.</div>
     </div>
 
-    <div class="chart-row">
-      <div class="chart-label">Pending VT bills</div>
-      <div class="chart-bar-wrap">
-        <div class="chart-bar target" data-width="75"></div>
-        <div class="chart-value">15%</div>
-      </div>
+    <div class="comp-row">
+      <div class="comp-state"><strong>Oregon</strong></div>
+      <div class="comp-mechanism">SB 934 (2017) sets a 12% all-payer primary care target with annual reporting requirements.</div>
+      <div class="comp-status comp-yes">Statutory target met by 2018.</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-state"><strong>Colorado</strong></div>
+      <div class="comp-mechanism">DOI Regulation 4-2-96 requires the primary care share to increase by one percentage point per year.</div>
+      <div class="comp-status comp-yes">Active regulatory authority.</div>
+    </div>
+
+    <div class="comp-row comp-vt">
+      <div class="comp-state"><strong>Vermont</strong></div>
+      <div class="comp-mechanism">S.197 and H.680 would establish a primary care payment reform program; pending bills propose a 15% target.</div>
+      <div class="comp-status comp-no">No binding target yet.</div>
     </div>
   </div>
 
   <p style="font-size: 0.9rem; color: var(--muted); font-style: italic; margin-top: 2rem;">
-    Bars show primary care as a share of total medical spending. Source: 2026 Milbank Memorial Fund Primary Care Scorecard; state regulatory filings.
+    Definitions of primary care spending vary by state, so direct percentage comparisons are imprecise. The clearer comparison is structural: three states have made primary care investment a measurable, enforceable obligation. Vermont has not. The 2026 Milbank Primary Care Scorecard reports Vermont's commercial spending share at 6.5% under a narrow definition, the highest measured share in the country, but Vermont currently has no binding target tying that figure to access outcomes.
   </p>
 </section>
 </div>
 
 <!-- ============ STATES ============ -->
 <section>
-  <div class="section-num">06 / Three states, three mechanisms</div>
-  <h2 class="section-title display">Other states already proved this works.</h2>
-  <p class="section-lead">Vermont does not have to invent a payment reform model. Three states have already built and tested ones that increased primary care investment without creating new agencies, new taxes, or new bureaucracies.</p>
+  <div class="section-num">06 / How each mechanism works</div>
+  <h2 class="section-title display">A target on paper is not the same as a target with teeth.</h2>
+  <p class="section-lead">The three states use different regulatory tools to make their primary care investment goals enforceable. Vermont's pending bills can borrow from any of them. The choice between them is less about ambition and more about which agency holds the lever.</p>
 
   <div class="states-grid reveal">
     <div class="state-card">
       <div class="state-name">Rhode Island</div>
-      <p class="state-mechanism">Required insurers to spend at least <strong>10.7%</strong> of medical expenses on primary care, beginning <strong>2010</strong>.</p>
-      <p class="state-mechanism">Office of the Health Insurance Commissioner enforces affordability standards directly through rate review.</p>
-      <p class="state-result">Spending projected to double by 2029.</p>
+      <p class="state-mechanism">The Office of the Health Insurance Commissioner reviews insurer rate filings every year. The 10.7% standard sits inside that rate review process, so when an insurer files rates that don't meet the standard, OHIC can reject them.</p>
+      <p class="state-result">The mechanism is enforcement through existing rate review.</p>
     </div>
 
     <div class="state-card">
       <div class="state-name">Oregon</div>
-      <p class="state-mechanism">Set a <strong>12%</strong> all-payer primary care target through SB 934 in 2017.</p>
-      <p class="state-mechanism">Coordinated Care Organizations were required to report annually and progress toward the target by 2023.</p>
-      <p class="state-result">CCOs averaged 15.5% by 2018. Hit the target. Beat it.</p>
+      <p class="state-mechanism">SB 934 set the 12% target in statute and required Coordinated Care Organizations to report annually on progress. The reporting requirement created public accountability without requiring direct enforcement.</p>
+      <p class="state-result">The mechanism is statutory target plus mandatory reporting.</p>
     </div>
 
     <div class="state-card">
       <div class="state-name">Colorado</div>
-      <p class="state-mechanism">Department of Insurance regulation increased primary care share by <strong>+1 percentage point per year</strong>.</p>
-      <p class="state-mechanism">No new statute. No new agency. Existing regulatory authority, deployed differently.</p>
-      <p class="state-result">Slow. Steady. Sustained.</p>
+      <p class="state-mechanism">The Division of Insurance issued Regulation 4-2-96 under existing authority, requiring the primary care share to increase by one percentage point per year. The annual increment removed the need for a fixed target debate.</p>
+      <p class="state-result">The mechanism is incremental growth through regulatory rulemaking.</p>
     </div>
   </div>
 </section>
